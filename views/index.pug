@@ -1,0 +1,26 @@
+extends ./frontend/partials/layout
+
+block content
+  div.container
+    ul.list-group
+      each val in lists
+        li.list-group-item= val.title + ':' + val.content
+    blockquote.quote-info test
+    
+    .row
+      .col-3
+        div.wrap-img
+          div.overlay
+            i.fa.fa-play-circle
+      .col-3
+        div.wrap-img
+          div.overlay
+            i.fa.fa-play-circle
+      .col-3
+        div.wrap-img
+          div.overlay
+            i.fa.fa-play-circle
+      .col-3
+        div.wrap-img
+          div.overlay
+            i.fa.fa-play-circle      

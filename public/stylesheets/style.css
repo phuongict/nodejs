@@ -1,0 +1,36 @@
+/* body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+} */
+
+a {
+  color: #00B7FF;
+}
+div.wrap-img{
+  background-image: url(https://photo-resize-zmp3.zadn.vn/w480_r1x1_jpeg/cover/1/8/2/9/1829f4ee2424732842743b63f789837c.jpg);
+  width: 100%;
+  height: 270px;
+  background-size: cover;
+  background-position: center;
+}
+div.overlay{
+  background-color: #607d8ba3;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s;
+}
+div.overlay i{
+  color: white;
+  font-size: 10px;
+  transition: all 0.3s;
+}
+div.overlay:hover{
+  opacity: 1;
+}
+div.overlay:hover i{
+  font-size: 40px;
+}
