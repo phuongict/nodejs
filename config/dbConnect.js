@@ -1,6 +1,4 @@
-require("dotenv").config();
-const MongoClient = require("mongodb").MongoClient;
-const assert = require('assert');
+const mongoose = require("mongoose");
 class dbConnect{
     constructor(url, port, dbName) {
         this.url = url;
@@ -9,14 +7,14 @@ class dbConnect{
         this.connectDB(); 
     }
     connectDB() {
-        const client = new MongoClient(this.url + ":" + this.port, { useUnifiedTopology: true });
-        client.connect((err) => {
-            assert.equal(null, err);
-            this.client = client;
-            this.db = client.db(this.dbName);
-            // console.log("Connected successfully to server");
-            // client.close();
-        });
+        try {
+            await mongoose.connect(
+                this.url + ":" + this.port + "/" + this.dbName,
+                { useNewUrlParser: true }
+            );
+        } catch (error) {
+            handleError(error);
+        }
     }
 }
-module.exports = new dbConnect(process.env.DB_URL, process.env.DB_PORT, process.env.DB_NAME);
+module.exports = dbConnect;

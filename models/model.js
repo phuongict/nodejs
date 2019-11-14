@@ -1,10 +1,13 @@
+require("dotenv").config();
+const mongoose = require("mongoose");
 const dbConnect = require('../config/dbConnect');
 
-class model{
+class model extends dbConnect{
     constructor() {
-        this.client = dbConnect.client;
-        this.db = dbConnect.db;
+        super(process.env.DB_URL, process.env.DB_PORT, process.env.DB_NAME);
         this.data = [];
+        this.collection = '';
+        this.schema
     }
 
     collection(name) {
@@ -13,14 +16,7 @@ class model{
     }
 
     all() {
-        return new Promise((resolve, reject) => {
-            this.db.collection(this.collection).find({}).toArray((err, docs) => {
-                if (err)
-                    reject(err);
-                else
-                    resolve(docs);
-            });
-        });
+        
     }
 
     insert(params) {
